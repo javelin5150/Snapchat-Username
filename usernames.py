@@ -7,7 +7,7 @@ def main():
     return username()
 
 def username():
-    #username = input("Type the username you want to check: ")
+    # username = input("Type the username you want to check: ")
     username = gui.PopupGetText('Type the username you want to check:')
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:66.0) Gecko/20100101 Firefox/66.0",
@@ -18,7 +18,6 @@ def username():
         "Connection": "keep-alive",
         "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
     }
-
     url = "https://accounts.snapchat.com/accounts/get_username_suggestions?requested_username={}&xsrf_token=PlEcin8s5H600toD4Swngg".format(username)
 
     r = requests.post(url, headers=headers)
@@ -28,11 +27,11 @@ def username():
     sugestions = data.get("reference").get("suggestions")
 
     if status == "OK":
-        #print("Good news, the username you picked is available!")
+        # print("Good news, the username you picked is available!")
         gui.Popup('Good news, the username you picked is available!')
 
     elif status == "TAKEN":
-        #print("Sorry, the username you picked is unavailable.")
+        # print("Sorry, the username you picked is unavailable.")
         gui.Popup('Sorry, the username you picked is unavailable.')
 
 main()
