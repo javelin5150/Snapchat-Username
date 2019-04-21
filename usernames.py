@@ -20,7 +20,7 @@ def username():
     }
     url = "https://accounts.snapchat.com/accounts/get_username_suggestions?requested_username={}&xsrf_token=PlEcin8s5H600toD4Swngg".format(username)
 
-    r = requests.post(url, headers=headers)
+    r = requests.post(url, headers = headers)
     data = r.json()
 
     status = data.get("reference").get("status_code")
